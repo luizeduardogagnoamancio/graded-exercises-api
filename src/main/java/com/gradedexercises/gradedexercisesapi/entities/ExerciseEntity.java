@@ -15,6 +15,17 @@ import java.util.List;
 
 public class ExerciseEntity {
 
+    public ExerciseEntity () {
+
+    }
+    public ExerciseEntity(ExerciseDto dto) {
+        this.number = dto.number();
+        this.title = dto.title();
+        this.sentence = dto.sentence();
+        this.answers = dto.answers();
+        this.chapter = dto.chapter();
+    }
+
     @Id @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name="_id")
     private String id;
@@ -31,11 +42,9 @@ public class ExerciseEntity {
     @Column(name="answers")
     private List<String> answers;
 
-    public ExerciseEntity(ExerciseDto dto) {
-        this.number = dto.number();
-        this.title = dto.title();
-        this.sentence = dto.sentence();
-        this.answers = dto.answers();
-    }
+    @Column(name="chapter")
+    private String chapter;
+
+
 
 }
