@@ -24,6 +24,7 @@ public class ExerciseEntity {
         this.sentence = dto.sentence();
         this.answers = dto.answers();
         this.chapter = dto.chapter();
+        this.cAnswer = dto.cAnswer();
     }
 
     @Id @GeneratedValue(strategy = GenerationType.UUID)
@@ -45,6 +46,7 @@ public class ExerciseEntity {
     @Column(name="chapter")
     private String chapter;
 
-
+    @Column(name="canswer")
+    private String cAnswer;
 
 }
