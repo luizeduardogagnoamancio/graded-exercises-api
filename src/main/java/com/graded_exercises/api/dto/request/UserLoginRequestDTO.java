@@ -1,6 +1,5 @@
 package com.graded_exercises.api.dto.request;
 
-import com.graded_exercises.api.enums.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,8 +7,7 @@ import lombok.Data;
 @Data
 @Builder
 @AllArgsConstructor
-public class UserRegisterRequestDTO {
+public class UserLoginRequestDTO {
     private String email;
     private String password;
-    private UserRole role;
 }
