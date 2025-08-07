@@ -2,6 +2,7 @@ package com.graded_exercises.api.service.impl;
 
 import com.graded_exercises.api.dto.request.UserLoginRequestDTO;
 import com.graded_exercises.api.dto.request.UserRegisterRequestDTO;
+import com.graded_exercises.api.dto.response.UserLoginResponseDTO;
 import com.graded_exercises.api.entity.User;
 import com.graded_exercises.api.infra.security.TokenService;
 import com.graded_exercises.api.repository.UserRepository;
@@ -25,11 +26,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Autowired
     private UserRepository userRepository;
 
-    public String login(UserLoginRequestDTO userLoginRequestDto) {
+    public UserLoginResponseDTO login(UserLoginRequestDTO userLoginRequestDto) {
         Authentication auth = this.authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userLoginRequestDto.getEmail(),
                 userLoginRequestDto.getPassword()));
 
-        return tokenService.generateToken((User) auth.getPrincipal());
+        return new UserLoginResponseDTO(tokenService.generateToken((User) auth.getPrincipal()));
     }
 
     @Override

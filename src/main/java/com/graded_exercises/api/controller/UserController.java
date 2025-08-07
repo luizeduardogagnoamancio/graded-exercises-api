@@ -2,6 +2,7 @@ package com.graded_exercises.api.controller;
 
 import com.graded_exercises.api.dto.request.UserLoginRequestDTO;
 import com.graded_exercises.api.dto.request.UserRegisterRequestDTO;
+import com.graded_exercises.api.dto.response.UserLoginResponseDTO;
 import com.graded_exercises.api.infra.security.TokenService;
 import com.graded_exercises.api.repository.UserRepository;
 import com.graded_exercises.api.service.AuthenticationService;
@@ -41,7 +42,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody @Valid UserLoginRequestDTO userLoginRequestDto) {
+    public ResponseEntity<UserLoginResponseDTO> login(@RequestBody @Valid UserLoginRequestDTO userLoginRequestDto) {
         return ResponseEntity.ok(authenticationService.login(userLoginRequestDto));
     }
 }
