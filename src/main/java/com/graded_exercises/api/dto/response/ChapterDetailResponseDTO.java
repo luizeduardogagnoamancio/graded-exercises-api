@@ -6,5 +6,6 @@ public record ChapterDetailResponseDTO(
         Long id,
         String title,
         String description,
+        Integer startQuestionIndex,
         List<QuestionResponseDTO> questions
 ) {}

@@ -19,23 +19,21 @@ public class UserAnswer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "USER_ANSWER_ID") // Adicionado para consistência
+    @Column(name = "USER_ANSWER_ID")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    // CORREÇÃO: O nome deve ser a coluna que guarda o ID do usuário
     @JoinColumn(name = "USER_ID", nullable = false)
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    // CORREÇÃO: O nome deve ser a coluna que guarda o ID da questão
     @JoinColumn(name = "QUESTION_ID", nullable = false)
     private Question question;
 
-    @Column(name = "IS_CORRECT", nullable = false) // Nome simplificado
+    @Column(name = "IS_CORRECT", nullable = false)
     private boolean isCorrect;
 
     @CreationTimestamp
-    @Column(name = "ANSWERED_AT", updatable = false) // Nome simplificado
+    @Column(name = "ANSWERED_AT", updatable = false)
     private LocalDateTime answeredAt;
 }

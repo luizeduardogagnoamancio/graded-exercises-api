@@ -28,8 +28,8 @@ public class ExerciseController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ChapterDetailResponseDTO> getChapterById(@PathVariable Long id) {
-        ChapterDetailResponseDTO chapterDetails = exerciseService.getChapterDetails(id);
+    public ResponseEntity<ChapterDetailResponseDTO> getChapterById(@PathVariable Long id, @AuthenticationPrincipal User user) {
+        ChapterDetailResponseDTO chapterDetails = exerciseService.getChapterDetails(id, user);
         return ResponseEntity.ok(chapterDetails);
     }
 }

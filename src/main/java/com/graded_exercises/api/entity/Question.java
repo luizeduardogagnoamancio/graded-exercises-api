@@ -22,11 +22,10 @@ public class Question {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "QUESTION_ID") // Adicionado para consistência
+    @Column(name = "QUESTION_ID")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    // CORREÇÃO: O nome deve ser a coluna de chave estrangeira no banco
     @JoinColumn(name = "CHAPTER_ID", nullable = false)
     private Chapter chapter;
 
@@ -35,7 +34,6 @@ public class Question {
     private QuestionType questionType;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    // CORREÇÃO: O nome da coluna vai aqui, e a definição do tipo (jsonb) aqui
     @Column(name = "QUESTION_CONTENT", columnDefinition = "jsonb")
     private String content;
 

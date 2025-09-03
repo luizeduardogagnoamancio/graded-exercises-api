@@ -33,6 +33,8 @@ public class SecurityConfigurations {
                         .requestMatchers(HttpMethod.POST, "/user/register").permitAll()
                         .requestMatchers(HttpMethod.GET, "/exercises/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/exercises").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/user-answers").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/user-answers").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
