@@ -22,14 +22,12 @@ public class UserAnswerController {
 
     @PostMapping
     public ResponseEntity<Void> saveAnswer(@RequestBody @Valid UserAnswerRequestDTO answerDTO, @AuthenticationPrincipal User user) {
-
         exerciseService.saveUserAnswer(answerDTO, user);
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/chapter/{chapterId}")
     public ResponseEntity<Void> resetChapterProgress(@PathVariable Long chapterId, @AuthenticationPrincipal User user) {
-
         exerciseService.resetChapterProgress(chapterId, user);
         return ResponseEntity.noContent().build();
     }
