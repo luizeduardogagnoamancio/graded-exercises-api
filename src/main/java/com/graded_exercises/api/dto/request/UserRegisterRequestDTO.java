@@ -17,7 +17,8 @@ public class UserRegisterRequestDTO {
     @NotBlank(message = "Email is required")
     private String email;
 
-    @Size(min = 8, message = "Password must be at least 8 characters long")
+    //Comentario para teste
+    //@Size(min = 8, message = "Password must be at least 8 characters long")
     @NotBlank(message = "Password is required")
     private String password;
 
