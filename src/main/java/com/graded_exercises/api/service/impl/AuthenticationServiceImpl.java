@@ -40,7 +40,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         }
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(userRegisterRequestDTO.getPassword());
-        User user = new User(userRegisterRequestDTO.getEmail(), encryptedPassword, userRegisterRequestDTO.getRole());
+        User user = new User(userRegisterRequestDTO.getEmail(), encryptedPassword, userRegisterRequestDTO.getRole(), userRegisterRequestDTO.getName());
 
         this.userRepository.save(user);
     }
