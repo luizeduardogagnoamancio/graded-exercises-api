@@ -35,6 +35,7 @@ public class SecurityConfigurations {
                         .requestMatchers(HttpMethod.GET, "/exercises").permitAll()
                         .requestMatchers(HttpMethod.POST, "/user-answers").permitAll()
                         .requestMatchers(HttpMethod.DELETE, "/user-answers").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/profile").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)

@@ -3,10 +3,12 @@ package com.graded_exercises.api.entity;
 import com.graded_exercises.api.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -33,13 +35,20 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserAnswer> userAnswers = new ArrayList<>();
 
+    @Column(name = "USER_NAME")
+    private String name;
 
-    public User(String email, String password, UserRole role) {
+    @CreationTimestamp
+    @Column(name = "USER_CREATED_AT", updatable = false)
+    private LocalDateTime createdAt;
+
+    public User(String email, String password, UserRole role, String name) {
         this.email = email;
         this.password = password;
         this.role = role;
-    }
+        this.name = name;
 
+    }
 
     @Enumerated(EnumType.STRING)
     @Column(name = "USER_ROLE", nullable = false)

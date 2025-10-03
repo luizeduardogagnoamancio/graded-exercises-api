@@ -6,8 +6,10 @@ import com.graded_exercises.api.entity.UserAnswer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -24,4 +26,14 @@ public interface UserAnswerRepository extends JpaRepository<UserAnswer, Long> {
     @Modifying
     @Query("DELETE FROM UserAnswer ua WHERE ua.user = :user AND ua.question.chapter = :chapter")
     void deleteByUserAndChapter(User user, Chapter chapter);
+
+    @Query("SELECT q.chapter.id FROM UserAnswer ua JOIN ua.question q " +
+            "WHERE ua.user = :user AND ua.isCorrect = true " +
+            "GROUP BY q.chapter.id " +
+            "HAVING COUNT(DISTINCT q.id) = (SELECT COUNT(q2.id) FROM Question q2 WHERE q2.chapter.id = q.chapter.id)")
+    List<Long> findCompletedChapterIdsByUser(@Param("user") User user);
+
+    @Query("SELECT DISTINCT CAST(ua.answeredAt AS LocalDate) FROM UserAnswer ua " +
+            "WHERE ua.user = :user ORDER BY CAST(ua.answeredAt AS LocalDate) DESC")
+    List<LocalDate> findDistinctAnswerDatesByUser(@Param("user") User user);
 }
