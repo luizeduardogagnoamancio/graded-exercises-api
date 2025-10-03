@@ -1,6 +1,7 @@
 package com.graded_exercises.api.dto.response;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public record UserProfileResponseDTO(
         String name,
@@ -8,5 +9,6 @@ public record UserProfileResponseDTO(
         LocalDateTime memberSince,
         int completedChapters,
         int totalChapters,
-        double overallAccuracy
+        int dailyStreak,
+        List<ChapterProgressResponseDTO> chapterProgress
 ) {}
