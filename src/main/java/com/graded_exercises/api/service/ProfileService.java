@@ -5,4 +5,5 @@ import com.graded_exercises.api.entity.User;
 
 public interface ProfileService {
     UserProfileResponseDTO getUserProfile(User user);
+    void updateAvatar(User user, String avatarUrl);
 }

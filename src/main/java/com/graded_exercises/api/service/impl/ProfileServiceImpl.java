@@ -5,6 +5,7 @@ import com.graded_exercises.api.dto.response.UserProfileResponseDTO;
 import com.graded_exercises.api.entity.User;
 import com.graded_exercises.api.repository.ChapterRepository;
 import com.graded_exercises.api.repository.UserAnswerRepository;
+import com.graded_exercises.api.repository.UserRepository;
 import com.graded_exercises.api.service.ProfileService;
 import org.springframework.stereotype.Service;
 
@@ -17,10 +18,13 @@ public class ProfileServiceImpl implements ProfileService {
 
     private final UserAnswerRepository userAnswerRepository;
     private final ChapterRepository chapterRepository;
+    private final UserRepository userRepository;
 
-    public ProfileServiceImpl(UserAnswerRepository userAnswerRepository, ChapterRepository chapterRepository, ChapterRepository chapterRepository1) {
+    public ProfileServiceImpl(UserAnswerRepository userAnswerRepository, ChapterRepository chapterRepository, ChapterRepository chapterRepository1,
+        UserRepository userRepository) {
         this.userAnswerRepository = userAnswerRepository;
         this.chapterRepository = chapterRepository1;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -74,6 +78,12 @@ public class ProfileServiceImpl implements ProfileService {
         }
 
         return currentStreak;
+    }
+
+    @Override
+    public void updateAvatar(User user, String avatarUrl) {
+        user.setAvatarUrl(avatarUrl);
+        userRepository.save(user);
     }
 
     private List<ChapterProgressResponseDTO> getChapterProgress(User user) {
