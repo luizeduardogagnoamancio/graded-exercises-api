@@ -20,10 +20,10 @@ public class ProfileServiceImpl implements ProfileService {
     private final ChapterRepository chapterRepository;
     private final UserRepository userRepository;
 
-    public ProfileServiceImpl(UserAnswerRepository userAnswerRepository, ChapterRepository chapterRepository, ChapterRepository chapterRepository1,
+    public ProfileServiceImpl(UserAnswerRepository userAnswerRepository, ChapterRepository chapterRepository,
         UserRepository userRepository) {
         this.userAnswerRepository = userAnswerRepository;
-        this.chapterRepository = chapterRepository1;
+        this.chapterRepository = chapterRepository;
         this.userRepository = userRepository;
     }
 
@@ -41,6 +41,7 @@ public class ProfileServiceImpl implements ProfileService {
                 user.getName(),
                 user.getEmail(),
                 user.getCreatedAt(),
+                user.getAvatarUrl(),
                 completedChapters,
                 (int) totalChapters,
                 dailyStreak,
