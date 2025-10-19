@@ -42,6 +42,9 @@ public class User implements UserDetails {
     @Column(name = "USER_CREATED_AT", updatable = false)
     private LocalDateTime createdAt;
 
+    @Column(name = "USER_AVATAR_URL")
+    private String avatarUrl;
+
     public User(String email, String password, UserRole role, String name) {
         this.email = email;
         this.password = password;

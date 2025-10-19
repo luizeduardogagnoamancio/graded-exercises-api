@@ -36,6 +36,7 @@ public class SecurityConfigurations {
                         .requestMatchers(HttpMethod.POST, "/user-answers").permitAll()
                         .requestMatchers(HttpMethod.DELETE, "/user-answers").permitAll()
                         .requestMatchers(HttpMethod.GET, "/profile").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/profile/avatar").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)

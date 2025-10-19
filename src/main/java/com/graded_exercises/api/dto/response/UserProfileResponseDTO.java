@@ -7,6 +7,7 @@ public record UserProfileResponseDTO(
         String name,
         String email,
         LocalDateTime memberSince,
+        String avatarUrl,
         int completedChapters,
         int totalChapters,
         int dailyStreak,
