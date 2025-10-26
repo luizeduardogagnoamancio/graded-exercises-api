@@ -91,6 +91,7 @@ public class ExerciseServiceImpl implements ExerciseService {
         userAnswer.setUser(user);
         userAnswer.setQuestion(question);
         userAnswer.setCorrect(answerDTO.isCorrect());
+        userAnswer.setChosenFormat(answerDTO.chosenFormat());
 
         userAnswerRepository.save(userAnswer);
     }

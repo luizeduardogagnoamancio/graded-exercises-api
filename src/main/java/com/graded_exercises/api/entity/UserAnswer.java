@@ -1,5 +1,6 @@
 package com.graded_exercises.api.entity;
 
+import com.graded_exercises.api.enums.QuestionType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -36,4 +37,8 @@ public class UserAnswer {
     @CreationTimestamp
     @Column(name = "ANSWERED_AT", updatable = false)
     private LocalDateTime answeredAt;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "CHOSEN_FORMAT")
+    private QuestionType chosenFormat;
 }
